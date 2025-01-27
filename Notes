@@ -1,0 +1,27 @@
+** collectionDate **
+
+    In phenopackets :
+
+        - gestationalAge : measure of the age of a pregnancy
+
+        - Age : represents age as a ISO8601 duration (e.g., P40Y10M05D).
+
+        - AgeRange : indicates that the individual’s age lies within a given range
+
+        - OntologyClass : indicates the age of the individual as an ontology class
+
+        - Timestamp : indicates a specific time
+
+        - TimeInterval : indicates an interval of time
+
+    In beacon:
+
+        Date of biosample collection in ISO8601 format. Type: String
+
+    The only one that matches exactly is Timestamp (maybe TimeInterval). Now for example it would be:
+
+    'collectionDate': "{'age': {'iso8601duration': 'P58Y4M24D'}}"
+
+    Not exactly the biosample collection date. Do we keep it this way or do we only accept collectionDate when it
+    contain Timestamp/TimeInterval ?
+
