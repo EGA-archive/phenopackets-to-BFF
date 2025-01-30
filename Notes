@@ -25,3 +25,11 @@
     Not exactly the biosample collection date. Do we keep it this way or do we only accept collectionDate when it
     contain Timestamp/TimeInterval ?
 
+
+
+** WORKING ON **
+
+## TODO updating the names of the fields inside measurement.procedure --> measurement_procedure_mapping
+## TODO Procedure, for example, is a field inside biosamples and inside measurements -> It has to detect the field it's
+working with and rename the fields
+## TODO timeElement needs mapping too - it will be used in many entries too : timeOfCollection,

@@ -27,7 +27,6 @@ phenopacket = MessageToDict(phenopacket)
 
 biosamples_phenopacket = phenopacket["biosamples"][0] # only take biosamples building block
 
-print(biosamples_phenopacket)
 
 # Rename building blocks
 
@@ -57,12 +56,18 @@ biosamples_beacon_dict = {}
 for key, value in biosamples_phenopacket.items():
     for key_beacon in beacon_mapping.keys():
         if key == key_beacon:
-            biosamples_beacon_dict[beacon_mapping[key_beacon]] =value
+            biosamples_beacon_dict[beacon_mapping[key_beacon]] = value
+
+
 
 # Adapt properties of building blocks
 
 # collection Date
+
 biosamples_beacon_dict["collectionDate"] = str(biosamples_beacon_dict["collectionDate"]) # from dict to string
+## TODO improve the mapping for TimeElement type
+
+
 
 # measurements
 
@@ -75,6 +80,8 @@ measurement_mapping = { # rename properties of measurement
     "description" : "notes"
 }
 
+print("measurements original:", biosamples_beacon_dict["measurements"])
+
 measurement_beconized = {}
 
 for key, value in biosamples_beacon_dict["measurements"][0].items():
@@ -83,13 +90,44 @@ for key, value in biosamples_beacon_dict["measurements"][0].items():
             measurement_beconized[measurement_mapping[key_measurement]] = value
 
 biosamples_beacon_dict["measurements"] = [measurement_beconized] # update final dict
+# measurement_beaconized must be a list of dictionaries ([measurement_beconized]) Pydantic can unpack it correctly
 
-"""
-The biosamples_beacon_dict["measurements"] key is expected to be a list of dictionaries that Pydantic can unpack into Measurement objects.
-"""
+# measurements.procedure
+## TODO create function to avoid code duplication
 
-# Extract unit, value and referenceRange from quantity as in the beacon spec the 3 entries are directly in
+procedure_mapping =  {
+"code" : "procedureCode",
+"bodySite" : "bodySite",
+"performed": "ageAtProcedure"
+}
+
+procedure_beconized = {}
+
+for key, value in biosamples_beacon_dict["measurements"][0]["procedure"].items():
+    print(key)
+    if key in procedure_mapping:
+        procedure_beconized[procedure_mapping[key]] = value
+
+biosamples_beacon_dict["measurements"][0]["procedure"] = procedure_beconized # update final dict
+
+print(biosamples_beacon_dict["obtentionProcedure"])
+
+procedure_beconized = {}
+
+for key, value in biosamples_beacon_dict["obtentionProcedure"].items():
+    print(key)
+    if key in procedure_mapping:
+        procedure_beconized[procedure_mapping[key]] = value
+
+biosamples_beacon_dict["obtentionProcedure"]= procedure_beconized # update final dict
+
+print(biosamples_beacon_dict["obtentionProcedure"])
+
+# measurements.measurementValue
+
+# Extract unit, value and referenceRange from quantity because in the beacon spec the 3 entries are directly in
 # measurementValue
+
 
 if "measurementValue" in measurement_beconized and "quantity" in measurement_beconized["measurementValue"]:
     quantity = measurement_beconized["measurementValue"]["quantity"]
@@ -101,28 +139,26 @@ if "measurementValue" in measurement_beconized and "quantity" in measurement_bec
 
 biosamples_beacon_dict["measurements"] = [measurement_beconized] # update final dict
 
-measurement_procedure_mapping = {
-    "code" : "procedureCode",
-    "bodySite" : "bodySite",
-    "performed": "ageAtProcedure"
-}
 
-measurement_procedure_beconized = {}
 
-for key, value in biosamples_beacon_dict["measurements"]["procedure"][0].items():
-    for key_measurement in measurement_procedure_mapping.keys():
-        if key == key_measurement:
-            measurement_procedure_beconized[measurement_procedure_mapping[key_measurement]] = value
+# TimeElement mapping
 
-biosamples_beacon_dict["measurements"]["procedure"] = measurement_procedure_beconized
 
-"""
-WORKING ON: 
-- updating the names of the fields inside measurement.procedure --> measurement_procedure_mapping
-- why is bodySite not being read?
-"""
-print(biosamples_beacon_dict["measurements"])
+print(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
+
+
+
+
+biosamples_beacon_dict["measurements"] = [measurement_beconized] # update final dict
+
+
+#flatten_age(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
+
+print(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
+print(biosamples_beacon_dict)
+
 Biosamples(**biosamples_beacon_dict)
+
 
 
 
