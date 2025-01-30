@@ -65,7 +65,7 @@ for key, value in biosamples_phenopacket.items():
 # collection Date
 
 biosamples_beacon_dict["collectionDate"] = str(biosamples_beacon_dict["collectionDate"]) # from dict to string
-## TODO improve the mapping for TimeElement type
+
 
 
 
@@ -141,21 +141,27 @@ biosamples_beacon_dict["measurements"] = [measurement_beconized] # update final 
 
 
 
-# TimeElement mapping
+# measurements.procedure.ageAtProcedure
+
+if "procedure" in measurement_beconized and "ageAtProcedure" in measurement_beconized["procedure"]:
+    age = measurement_beconized["procedure"]["ageAtProcedure"]["age"]
+    measurement_beconized["procedure"]["ageAtProcedure"] = {"iso8601duration": age.get("iso8601duration")}
+
+biosamples_beacon_dict["measurements"] = [measurement_beconized]
+
+# measurements.observationMoment
+
+if "observationMoment" in measurement_beconized and "timestamp" in measurement_beconized["observationMoment"]:
+    observationMoment = measurement_beconized["observationMoment"]["timestamp"]
+    measurement_beconized["observationMoment"] = observationMoment
+
+# obtentionProcedure.ageAtProcedure
+
+if "obtentionProcedure" in biosamples_beacon_dict and "ageAtProcedure" in biosamples_beacon_dict["obtentionProcedure"]:
+    age = biosamples_beacon_dict["obtentionProcedure"]["ageAtProcedure"]["age"]
+    biosamples_beacon_dict["obtentionProcedure"]["ageAtProcedure"] = {"iso8601duration": age.get("iso8601duration")}
 
 
-print(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
-
-
-
-
-biosamples_beacon_dict["measurements"] = [measurement_beconized] # update final dict
-
-
-#flatten_age(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
-
-print(biosamples_beacon_dict["measurements"][0]["procedure"]["ageAtProcedure"])
-print(biosamples_beacon_dict)
 
 Biosamples(**biosamples_beacon_dict)
 

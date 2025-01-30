@@ -29,7 +29,5 @@
 
 ** WORKING ON **
 
-## TODO updating the names of the fields inside measurement.procedure --> measurement_procedure_mapping
-## TODO Procedure, for example, is a field inside biosamples and inside measurements -> It has to detect the field it's
-working with and rename the fields
-## TODO timeElement needs mapping too - it will be used in many entries too : timeOfCollection,
+## TODO timeElement needs mapping too - it will be used in many entries too : ageAtProcedure and observationMoment
+## TODO create phenopacket with the other options of timeElement
