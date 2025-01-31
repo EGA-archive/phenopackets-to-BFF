@@ -1,3 +1,4 @@
+BIOSAMPLES
 ** collectionDate **
 
     In phenopackets :
@@ -25,9 +26,14 @@
     Not exactly the biosample collection date. Do we keep it this way or do we only accept collectionDate when it
     contain Timestamp/TimeInterval ?
 
-
+INDIVIDUALS
+## TODO create this mapping logic and update mapping spreadsheet
+**interventionsOrProcedures**
+    Mapping from medicalAction.action when action = procedure, radiationTherapy?, TherapeuticRegimen?
+**treatments**
+    Mapping grom medicalAction.action when action = treatment
 
 ** WORKING ON **
 
-## TODO timeElement needs mapping too - it will be used in many entries too : ageAtProcedure and observationMoment
-## TODO create phenopacket with the other options of timeElement
+## TODO create phenopacket with the other options of timeElement to test timeElement function
+## TODO test with other phenopackets https://phenopacket-schema.readthedocs.io/en/latest/examples.html

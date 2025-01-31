@@ -2,7 +2,7 @@ import json
 from google.protobuf.json_format import MessageToDict, ParseDict
 import phenopackets.schema.v2 as pps2
 from validators.biosamples import Biosamples
-
+from validators.individuals import Individuals
 
 # Load JSON Phenopacket file
 with open('./testphen.json', 'r') as f:
@@ -14,8 +14,9 @@ phenopacket_dict = MessageToDict(phenopacket)
 
 biosamples_phenopacket = phenopacket_dict["biosamples"][0]  # Extract biosamples block
 
+
 # General mapping dictionaries
-beacon_mapping = {
+biosamples_mapping = {
     "id": "id",
     "individualId": "individualId",
     "description": "notes",
@@ -129,7 +130,7 @@ def process_biosamples(data):
     """
     Process and rename the biosample properties.
     """
-    biosample = rename_keys(data, beacon_mapping)
+    biosample = rename_keys(data, biosamples_mapping)
 
     # Convert collectionDate to string if it exists
     if "collectionDate" in biosample:
@@ -152,6 +153,41 @@ def process_biosamples(data):
 
 # Apply transformations
 biosamples_beacon_dict = process_biosamples(biosamples_phenopacket)
+## TODO check mandatory fields for beacon biosamples are present before conversion
+
+
+individuals_beacon_dict = {}
+
+sex_mapping = {
+    "UNKNOWN_SEX" : {"id": "NCIT_C17998", "label": "Uknown"},
+    "FEMALE": {"id": "NCIT_C46113", "label": "Female"},
+    "MALE": {"id": "NCIT:C46112", "label": "Male"},
+    "OTHER_SEX" : {"id": "NCIT:C45908", "label": "Intersex"},
+}
+
+# From subject : contains the two mandatory fields for Individuals
+
+if phenopacket_dict["subject"] and "id" and "sex" in phenopacket_dict["subject"]: # mandatory fields for Individuals
+    individuals_beacon_dict["id"] = phenopacket_dict["subject"]["id"]
+    for key in sex_mapping.keys():
+        if key in phenopacket_dict["subject"]["sex"]:
+            individuals_beacon_dict["sex"] = sex_mapping[key]
+    if "karyotypicSex" in phenopacket_dict["subject"]:
+        individuals_beacon_dict["karyotypicSex"] = phenopacket_dict["subject"]["karyotypicSex"]
+
+
+if "measurements" in phenopacket_dict:
+    measurement_beacon = process_measurement(phenopacket_dict["measurements"][0])
+    individuals_beacon_dict["measures"] = [measurement_beacon]
+
+if "files" in phenopacket_dict : # additional info
+    individuals_beacon_dict["info"] = phenopacket_dict["files"][0]["individualToFileIdentifiers"]
+
+
+
+
+print(individuals_beacon_dict)
 
 # Validate with Biosamples class
 Biosamples(**biosamples_beacon_dict)
+Individuals(**individuals_beacon_dict)
