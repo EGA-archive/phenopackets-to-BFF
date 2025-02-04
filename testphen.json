@@ -33,7 +33,7 @@
     "phenotypicFeatures": [
         {
             "type": {
-                "id": "NCIT:_C159658",
+                "id": "NCIT:C159658",
                 "label": "Obese"
             },
             "excluded": true
@@ -82,6 +82,43 @@
             "assay": {
                 "id": "LOINC:26515-7",
                 "label": "Platelets [#/volume] in Blood"
+            },
+            "value": {
+                "quantity": {
+                    "unit": {
+                        "id": "UO:0000316",
+                        "label": "cells per imcroliter"
+                    },
+                    "value": 24943.0,
+                    "referenceRange": {
+                        "unit": {
+                            "id": "UO:0000316",
+                            "label": "cells per imcroliter"
+                        },
+                        "low": 150000.0,
+                        "high": 450000.0
+                    }
+                }
+            },
+            "timeObserved": {
+                "timestamp": "2008-07-03T11:30:21Z"
+            },
+            "procedure": {
+                "code": {
+                    "id": "NCIT:C40592",
+                    "label": "Platelet Activating Factor Signaling Process"
+                },
+                "performed": {
+                    "age": {
+                        "iso8601duration": "P58Y3M25D"
+                    }
+                }
+            }
+        },
+        {
+            "assay": {
+                "id": "LOINC:1234",
+                "label": "Testing"
             },
             "value": {
                 "quantity": {
@@ -378,6 +415,19 @@
                         "label": "milligram per kilogram"
                     },
                     "value": 200.0
+                }
+            }
+        },
+        {    
+            "procedure": {
+                "code": {
+                    "id": "NCIT:C40592",
+                    "label": "Platelet Activating Factor Signaling Process"
+                },
+                "performed": {
+                    "age": {
+                        "iso8601duration": "P58Y3M25D"
+                    }
                 }
             }
         },

@@ -24,16 +24,28 @@ BIOSAMPLES
     'collectionDate': "{'age': {'iso8601duration': 'P58Y4M24D'}}"
 
     Not exactly the biosample collection date. Do we keep it this way or do we only accept collectionDate when it
-    contain Timestamp/TimeInterval ?
+    contain Timestamp/TimeInterval ? ## TODO ask
 
 INDIVIDUALS
+** diseases **
+
+    There's a field called excluded that tells if certain disease is or is not in the cohort.
+    Do we insert the disease or phenotypePheature that was excluded? Do we add this field in notes as the extra info
+    that didn't have a mapping in beacon? ## TODO ask
+    Now in diseases excluded info is lost, but the disease entry is kept (I think this is misleading, it seems certain
+    disease is present and meand exactly the opposite)
+
 ## TODO create this mapping logic and update mapping spreadsheet
 **interventionsOrProcedures**
-    Mapping from medicalAction.action when action = procedure, radiationTherapy?, TherapeuticRegimen?
+    Mapping from medicalAction.action when action = procedure
 **treatments**
-    Mapping grom medicalAction.action when action = treatment
+    Mapping from medicalAction.action when action = treatment
 
 ** WORKING ON **
 
 ## TODO create phenopacket with the other options of timeElement to test timeElement function
 ## TODO test with other phenopackets https://phenopacket-schema.readthedocs.io/en/latest/examples.html
+## TODO compare my mapping to Manu's mapping - how many extra things do I have?
+## TODO many entries of the same type can be found in a phenopacket. Make everything a loop : see individuals.diseases
+## TODO check mandatory fields for beacon biosamples are present before conversion
+## TODO how to add pedigree data?? - Talk to Aldar

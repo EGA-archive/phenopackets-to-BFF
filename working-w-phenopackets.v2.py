@@ -12,9 +12,6 @@ with open('./testphen.json', 'r') as f:
 phenopacket = ParseDict(phenopacket_data, pps2.Phenopacket())
 phenopacket_dict = MessageToDict(phenopacket)
 
-biosamples_phenopacket = phenopacket_dict["biosamples"][0]  # Extract biosamples block
-
-
 # General mapping dictionaries
 biosamples_mapping = {
     "id": "id",
@@ -50,6 +47,37 @@ procedure_mapping = {
     "code": "procedureCode",
     "bodySite": "bodySite",
     "performed": "ageAtProcedure"
+}
+
+sex_mapping = {
+    "UNKNOWN_SEX" : {"id": "NCIT_C17998", "label": "Uknown"},
+    "FEMALE": {"id": "NCIT_C46113", "label": "Female"},
+    "MALE": {"id": "NCIT:C46112", "label": "Male"},
+    "OTHER_SEX" : {"id": "NCIT:C45908", "label": "Intersex"},
+}
+
+diseases_mapping = {
+    "onset": "ageOfOnset",
+    "term" : "diseaseCode",
+    "clinicalTnmFinding" : "severity",
+     "diseaseStage" : "stage"
+}
+
+phenotypicFeature_mapping= {
+    "evidence" : "evidence",
+    "type": "featureType",
+    "modifiers" : "modifiers",
+    "description": "notes",
+    "onset": "onset",
+    "resolution" : "resolution",
+    "severity" : "severity"
+}
+
+medicalActions_mapping = {
+    "cumulativeDose":"cumulativeDose",
+    "doseIntervals": "doseIntervals",
+    "routeOfAdministration" : "routeOfAdministration",
+    "agent" : "treatmentCode"
 }
 
 timeElement = ["age", "ageRange", "gestationalAge", "timestamp", "ontologyClass"]
@@ -152,18 +180,13 @@ def process_biosamples(data):
 
 
 # Apply transformations
-biosamples_beacon_dict = process_biosamples(biosamples_phenopacket)
-## TODO check mandatory fields for beacon biosamples are present before conversion
+
+for biosample in phenopacket_dict["biosamples"]:
+    biosamples_beacon_dict = process_biosamples(biosample)
+
 
 
 individuals_beacon_dict = {}
-
-sex_mapping = {
-    "UNKNOWN_SEX" : {"id": "NCIT_C17998", "label": "Uknown"},
-    "FEMALE": {"id": "NCIT_C46113", "label": "Female"},
-    "MALE": {"id": "NCIT:C46112", "label": "Male"},
-    "OTHER_SEX" : {"id": "NCIT:C45908", "label": "Intersex"},
-}
 
 # From subject : contains the two mandatory fields for Individuals
 
@@ -186,7 +209,77 @@ if "files" in phenopacket_dict : # additional info
 
 
 
-print(individuals_beacon_dict)
+diseases_extra_att = ["resolution", "primarySite", "laterality"]
+diseases_keys_to_reformat = ["severity", "stage"]
+
+if "diseases" in phenopacket_dict:
+    individuals_beacon_dict["diseases"] = []
+    for i, disease in enumerate(phenopacket_dict["diseases"]):
+        if any(key in disease for key in diseases_extra_att): # save information that doesn't have a field in beacon
+            notes = {
+                "resolution": disease.get("resolution"),
+                "primarySite": disease.get("primarySite"),
+                "laterality": disease.get("laterality"),
+            }
+        updated_disease = rename_keys(disease, diseases_mapping)
+        for key in diseases_keys_to_reformat:
+            if key in updated_disease.keys():
+                updated_disease[key] = updated_disease[key][0] # must be dict not list
+        if "ageOfOnset" in updated_disease.keys(): # correct time formatting
+            updated_disease["ageOfOnset"] = process_time_element(
+                updated_disease["ageOfOnset"])
+
+        updated_disease["notes"] = str(notes) ## add extra attributes
+
+        individuals_beacon_dict["diseases"].append(updated_disease) ## add it to beacon language dict
+
+
+
+if "phenotypicFeatures" in phenopacket_dict:
+    individuals_beacon_dict["phenotypicFeatures"] = []
+    for i, phenotypicFeature in enumerate(phenopacket_dict["phenotypicFeatures"]):
+        updated_keys = rename_keys(phenotypicFeature, phenotypicFeature_mapping)
+        for key in diseases_keys_to_reformat:
+            if key in updated_keys.keys():
+                updated_keys[key] = updated_keys[key]  # must be dict not list
+        if "evidence" in updated_keys.keys():
+            updated_keys["evidence"] = updated_keys["evidence"][0]
+            if "reference" in updated_keys["evidence"]:
+                updated_keys["evidence"]["reference"]["notes"] = updated_keys["evidence"]["reference"].pop(
+                    "description")
+        for key in ["onset", "resolution"]: #timeElement objects
+            if key in updated_keys.keys():
+                updated_keys[key] = process_time_element(updated_keys[key])
+
+        individuals_beacon_dict["phenotypicFeatures"].append(updated_keys)  ## add it to beacon language dict
+
+
+
+
+if "medicalActions" in phenopacket_dict:
+    individuals_beacon_dict["treatments"] = []
+    individuals_beacon_dict["interventionsOrProcedures"] = []
+    for i, medicalAction in enumerate(phenopacket_dict["medicalActions"]):
+        if "treatment" in medicalAction.keys():
+            updated_keys = rename_keys(medicalAction["treatment"], medicalActions_mapping)
+            individuals_beacon_dict["treatments"].append(updated_keys)
+        if "procedure" in medicalAction.keys():
+            updated_keys = rename_keys(medicalAction["procedure"], procedure_mapping)
+            updated_keys["ageAtProcedure"] = process_time_element(updated_keys["ageAtProcedure"])
+            individuals_beacon_dict["interventionsOrProcedures"].append(updated_keys)
+
+
+
+
+
+
+
+
+
+
+
+print(biosamples_beacon_dict)
+
 
 # Validate with Biosamples class
 Biosamples(**biosamples_beacon_dict)
