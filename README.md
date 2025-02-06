@@ -23,7 +23,7 @@ For detailed information about the mapping of properties between Phenopackets an
 2. Navigate to the project directory:
 
    ```bash
-   cd phenopackets
+   cd phenopackets-to-BFF
    ```
 
 ## Usage
