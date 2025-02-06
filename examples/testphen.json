@@ -211,6 +211,43 @@
                             }
                         }
                     }
+                },
+                {
+                    "assay": {
+                        "id": "LOINC:1234",
+                        "label": "Testing"
+                    },
+                    "value": {
+                        "quantity": {
+                            "unit": {
+                                "id": "UO:0000316",
+                                "label": "cells per imcroliter"
+                            },
+                            "value": 24943.0,
+                            "referenceRange": {
+                                "unit": {
+                                    "id": "UO:0000316",
+                                    "label": "cells per imcroliter"
+                                },
+                                "low": 150000.0,
+                                "high": 450000.0
+                            }
+                        }
+                    },
+                    "timeObserved": {
+                        "timestamp": "2008-07-03T11:30:21Z"
+                    },
+                    "procedure": {
+                        "code": {
+                            "id": "NCIT:C40592",
+                            "label": "Platelet Activating Factor Signaling Process"
+                        },
+                        "performed": {
+                            "age": {
+                                "iso8601duration": "P58Y3M25D"
+                            }
+                        }
+                    }
                 }
             ],
             "taxonomy": {
@@ -484,7 +521,8 @@
         {
             "uri": "file://ThisFileDoesNotExistHeHe.vcf.gz",
             "individualToFileIdentifiers": {
-                "Father": "Father_VCF"
+                "Father": "Father_VCF",
+                "Mother": "Mother_VCF"
             },
             "fileAttributes": {
                 "genomeAssembly": "GRCh38",

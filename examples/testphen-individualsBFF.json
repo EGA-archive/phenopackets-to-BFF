@@ -1,0 +1,194 @@
+{
+    "id": "Father",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "karyotypicSex": "XY",
+    "measures": [
+        {
+            "assayCode": {
+                "id": "LOINC:26515-7",
+                "label": "Platelets [#/volume] in Blood"
+            },
+            "measurementValue": {
+                "unit": {
+                    "id": "UO:0000316",
+                    "label": "cells per imcroliter"
+                },
+                "value": 24943.0,
+                "referenceRange": {
+                    "unit": {
+                        "id": "UO:0000316",
+                        "label": "cells per imcroliter"
+                    },
+                    "low": 150000.0,
+                    "high": 450000.0
+                }
+            },
+            "observationMoment": "2008-07-03T11:30:21Z",
+            "procedure": {
+                "procedureCode": {
+                    "id": "NCIT:C40592",
+                    "label": "Platelet Activating Factor Signaling Process"
+                },
+                "ageAtProcedure": {
+                    "iso8601duration": "P58Y3M25D"
+                }
+            }
+        },
+        {
+            "assayCode": {
+                "id": "LOINC:1234",
+                "label": "Testing"
+            },
+            "measurementValue": {
+                "unit": {
+                    "id": "UO:0000316",
+                    "label": "cells per imcroliter"
+                },
+                "value": 24943.0,
+                "referenceRange": {
+                    "unit": {
+                        "id": "UO:0000316",
+                        "label": "cells per imcroliter"
+                    },
+                    "low": 150000.0,
+                    "high": 450000.0
+                }
+            },
+            "observationMoment": "2008-07-03T11:30:21Z",
+            "procedure": {
+                "procedureCode": {
+                    "id": "NCIT:C40592",
+                    "label": "Platelet Activating Factor Signaling Process"
+                },
+                "ageAtProcedure": {
+                    "iso8601duration": "P58Y3M25D"
+                }
+            }
+        }
+    ],
+    "info": {
+        "individualToFileIdentifiers": {
+            "Father": "Father_VCF",
+            "Mother": "Mother_VCF"
+        }
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "ageOfOnset": {
+                "iso8601duration": "P62Y2M12D"
+            },
+            "stage": {
+                "id": "NCIT:C27971",
+                "label": "Stage IV"
+            },
+            "severity": {
+                "id": "NCIT:C27971",
+                "label": "Stage IV"
+            },
+            "notes": "{'resolution': {'age': {'iso8601duration': 'P64Y6M21D'}}, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': {'id': 'NCIT:C160199', 'label': 'Tumor Laterality Right'}}"
+        },
+        {
+            "diseaseCode": {
+                "id": "NCIT:C26747",
+                "label": "Type 2 Diabetes Mellitus"
+            }
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            },
+            "excluded": true
+        },
+        {
+            "featureType": {
+                "id": "HP:0001270",
+                "label": "Motor delay"
+            },
+            "severity": {
+                "id": "HP:0012825",
+                "label": "Mild"
+            },
+            "modifiers": [
+                {
+                    "id": "HP:0031796",
+                    "label": "Recurrent"
+                }
+            ],
+            "onset": {
+                "iso8601duration": "P43Y"
+            },
+            "resolution": {
+                "iso8601duration": "P45Y"
+            },
+            "evidence": {
+                "evidenceCode": {
+                    "id": "ECO:0006017",
+                    "label": "author statement from published clinical study used in manual assertion"
+                },
+                "reference": {
+                    "id": "PMID:30962759",
+                    "notes": "Recurrent Erythema Nodosum in a Child with a SHOC2 Gene Mutation"
+                }
+            }
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentCode": {
+                "id": "DrugCentral:1610",
+                "label": "losartan"
+            },
+            "routeOfAdministration": {
+                "id": "NCIT:C38288",
+                "label": "Oral Route of Administration"
+            },
+            "doseIntervals": [
+                {
+                    "quantity": {
+                        "unit": {
+                            "id": "UO:0000022",
+                            "label": "milligram"
+                        },
+                        "value": 30.0
+                    },
+                    "scheduleFrequency": {
+                        "id": "NCIT:C64496",
+                        "label": "Twice Daily"
+                    },
+                    "interval": {
+                        "start": "2020-03-15T12:00:00Z",
+                        "end": "0202-03-25T13:22:17Z"
+                    }
+                }
+            ],
+            "cumulativeDose": {
+                "unit": {
+                    "id": "EFO:0002902",
+                    "label": "milligram per kilogram"
+                },
+                "value": 200.0
+            }
+        }
+    ],
+    "interventionsOrProcedures": [
+        {
+            "procedureCode": {
+                "id": "NCIT:C40592",
+                "label": "Platelet Activating Factor Signaling Process"
+            },
+            "ageAtProcedure": {
+                "iso8601duration": "P58Y3M25D"
+            }
+        }
+    ]
+}
