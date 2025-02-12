@@ -54,5 +54,5 @@ pip install -r requirements.txt
 If you encounter issues or have questions, feel free to open an issue in the [GitHub repository](https://github.com/mirgin01/phenopackets/issues).
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+
 
