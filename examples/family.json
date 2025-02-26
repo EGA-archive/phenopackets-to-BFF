@@ -1,0 +1,178 @@
+{
+    "id": "Family",
+    "proband": {
+        "id": "ID1_phenopacket",
+        "subject": {
+            "id": "ID1",
+            "sex": "MALE"
+        },
+        "phenotypicFeatures": [
+            {
+                "type": {
+                    "id": "NCIT:_C159658",
+                    "label": "Obese"
+                }
+            }
+        ],
+        "diseases": [
+            {
+                "term": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                },
+                "primarySite": {
+                    "id": "NCIT:C12400",
+                    "label": "Thyroid Gland"
+                }
+            }
+        ],
+        "metaData": {
+            "created": "2025-02-24T13:48:03Z",
+            "createdBy": "Aldar Cabrelles",
+            "submittedBy": "Mickey Mouse",
+            "resources": [
+                {
+                    "id": "ncit",
+                    "name": "NCI Thesaurus OBO Edition",
+                    "url": "http://purl.obolibrary.org/obo/ncit.owl",
+                    "version": "https://github.com/NCI-Thesaurus/thesaurus-obo-edition/releases/tag/v2024-05-07/ncit.owl",
+                    "namespacePrefix": "NCIT"
+                },
+                {
+                    "id": "snomed",
+                    "name": "SNOMED CT",
+                    "url": "https://browser.ihtsdotools.org/",
+                    "version": "https://browser.ihtsdotools.org/?edition=MAIN/2024-12-01",
+                    "namespacePrefix": "SNOMED"
+                }
+            ],
+            "phenopacketSchemaVersion": "2.0"
+        }
+    },
+    "relatives": [
+        {
+            "id": "ID2_phenopacket",
+            "subject": {
+                "id": "ID2",
+                "sex": "MALE"
+            },
+            "phenotypicFeatures": [
+                {
+                    "type": {
+                        "id": "NCIT:_C159658",
+                        "label": "Obese"
+                    }
+                }
+            ],
+            "metaData": {
+                "created": "2025-02-24T13:48:03Z",
+                "createdBy": "Aldar Cabrelles",
+                "submittedBy": "Mickey Mouse",
+                "resources": [
+                    {
+                        "id": "ncit",
+                        "name": "NCI Thesaurus OBO Edition",
+                        "url": "http://purl.obolibrary.org/obo/ncit.owl",
+                        "version": "https://github.com/NCI-Thesaurus/thesaurus-obo-edition/releases/tag/v2024-05-07/ncit.owl",
+                        "namespacePrefix": "NCIT"
+                    },
+                    {
+                        "id": "snomed",
+                        "name": "SNOMED CT",
+                        "url": "https://browser.ihtsdotools.org/",
+                        "version": "https://browser.ihtsdotools.org/?edition=MAIN/2024-12-01",
+                        "namespacePrefix": "SNOMED"
+                    }
+                ],
+                "phenopacketSchemaVersion": "2.0"
+            }
+        },
+        {
+            "id": "ID3_phenopacket",
+            "subject": {
+                "id": "ID3",
+                "sex": "FEMALE"
+            },
+            "diseases": [
+                {
+                    "term": {
+                        "id": "NCIT:C3879",
+                        "label": "Thyroid Gland Medullary Carcinoma"
+                    },
+                    "primarySite": {
+                        "id": "NCIT:C12400",
+                        "label": "Thyroid Gland"
+                    }
+                }
+            ],
+            "metaData": {
+                "created": "2025-02-24T13:48:03Z",
+                "createdBy": "Aldar Cabrelles",
+                "submittedBy": "Mickey Mouse",
+                "resources": [
+                    {
+                        "id": "ncit",
+                        "name": "NCI Thesaurus OBO Edition",
+                        "url": "http://purl.obolibrary.org/obo/ncit.owl",
+                        "version": "https://github.com/NCI-Thesaurus/thesaurus-obo-edition/releases/tag/v2024-05-07/ncit.owl",
+                        "namespacePrefix": "NCIT"
+                    },
+                    {
+                        "id": "snomed",
+                        "name": "SNOMED CT",
+                        "url": "https://browser.ihtsdotools.org/",
+                        "version": "https://browser.ihtsdotools.org/?edition=MAIN/2024-12-01",
+                        "namespacePrefix": "SNOMED"
+                    }
+                ],
+                "phenopacketSchemaVersion": "2.0"
+            }
+        }
+    ],
+    "pedigree": {
+        "persons": [
+            {
+                "familyId": "FAM001",
+                "individualId": "ID1",
+                "paternalId": "ID2",
+                "maternalId": "ID3",
+                "sex": "MALE",
+                "affectedStatus": "AFFECTED"
+            },
+            {
+                "familyId": "FAM002",
+                "individualId": "ID2",
+                "sex": "MALE",
+                "affectedStatus": "UNAFFECTED"
+            },
+            {
+                "familyId": "FAM003",
+                "individualId": "ID3",
+                "sex": "FEMALE",
+                "affectedStatus": "AFFECTED"
+            }
+        ]
+    },
+    "metaData": {
+        "created": "2025-02-24T13:48:03Z",
+        "createdBy": "Aldar Cabrelles",
+        "submittedBy": "Mickey Mouse",
+        "resources": [
+            {
+                "id": "ncit",
+                "name": "NCI Thesaurus OBO Edition",
+                "url": "http://purl.obolibrary.org/obo/ncit.owl",
+                "version": "https://github.com/NCI-Thesaurus/thesaurus-obo-edition/releases/tag/v2024-05-07/ncit.owl",
+                "namespacePrefix": "NCIT"
+            },
+            {
+                "id": "snomed",
+                "name": "SNOMED CT",
+                "url": "https://browser.ihtsdotools.org/",
+                "version": "https://browser.ihtsdotools.org/?edition=MAIN/2024-12-01",
+                "namespacePrefix": "SNOMED"
+            }
+        ],
+        "phenopacketSchemaVersion": "2.0"
+    }
+}

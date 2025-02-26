@@ -11,6 +11,7 @@ from google.protobuf.json_format import MessageToDict, ParseDict
 import phenopackets.schema.v2 as pps2
 from validators.biosamples import Biosamples
 from validators.individuals import Individuals
+from google.protobuf.json_format import ParseError
 
 # General mapping dictionaries
 biosamples_mapping = {
@@ -60,7 +61,8 @@ diseases_mapping = {
     "onset": "ageOfOnset",
     "term" : "diseaseCode",
     "clinicalTnmFinding" : "severity",
-     "diseaseStage" : "stage"
+    "diseaseStage" : "stage",
+    "excluded" : "excluded"
 }
 
 phenotypicFeature_mapping= {
@@ -271,6 +273,7 @@ def create_biosamples(data):
         print("... Skipping Biosamples Schema ...")
 
 
+
 def create_individuals(data):
     """
     Gather and rename different properties to form individuals
@@ -313,7 +316,10 @@ def create_individuals(data):
             print("    - diseases added to Individuals")
             for disease in data["diseases"]:
                 updated_disease = process_disease(disease)
-                individuals_beacon_dict.setdefault("diseases", []).append(updated_disease)  ## add it to beacon language dict
+                if "excluded" not in updated_disease.keys() : # in phenopackets excluded represents a disease not
+                    # included, this cannot be inserted in the beacon format
+                    individuals_beacon_dict.setdefault("diseases", []).append(updated_disease)  ## add it to beacon language dict
+
 
         if "phenotypicFeatures" in data:
             print("    - phenotypicFeatures added to Individuals")
@@ -344,9 +350,15 @@ def main():
     with open(sys.argv[1], 'r') as f: # Load JSON Phenopacket file
         phenopacket_data = json.load(f)
 
-    # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
-    phenopacket = ParseDict(phenopacket_data, pps2.Phenopacket())
-    phenopacket_dict = MessageToDict(phenopacket)
+    try:
+        # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
+        phenopacket = ParseDict(phenopacket_data, pps2.Phenopacket())
+        phenopacket_dict = MessageToDict(phenopacket)
+    except ParseError:
+        # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
+        phenopacket = ParseDict(phenopacket_data, pps2.Family())
+        phenopacket_dict = MessageToDict(phenopacket)
+    ## TODO create exception to read cohorts
 
     # Apply transformations
     if "biosamples" in phenopacket_dict:
@@ -359,6 +371,9 @@ def main():
         with open(output_path, "a") as f:  # save BFFs
             json.dump(biosamples_beacon_dict, f, indent=4)
         console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
+    else:
+        console.print("[bold]The mandatory fields for BioSamples were not present in the phenopacket "
+                      "[/bold]")
 
     individuals_beacon_dict = create_individuals(phenopacket_dict) # Individuals multiciplicity: 0..1
     if individuals_beacon_dict:
@@ -368,7 +383,7 @@ def main():
             json.dump(individuals_beacon_dict, f, indent=4)
         console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", output_path)
     else:
-        console.print("[bold]The mandatory fields for BioSamples and Individuals were not present in the phenopacket "
+        console.print("[bold]The mandatory fields for Individuals were not present in the phenopacket "
                       "[/bold]")
 
 if __name__ == "__main__":  # the first executed function will be main()

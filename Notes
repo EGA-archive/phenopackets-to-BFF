@@ -30,13 +30,15 @@ INDIVIDUALS
 ** diseases **
 
     There's a field called excluded that tells if certain disease is or is not in the cohort.
-    Do we insert the disease or phenotypePheature that was excluded? Do we add this field in notes as the extra info
-    that didn't have a mapping in beacon? ## TODO ask
-    Now in diseases excluded info is lost, but the disease entry is kept (I think this is misleading, it seems certain
-    disease is present and meand exactly the opposite)
+    "excluded" cannot be inserted into diseases in beacon so if a diseases excluded = true is inserted into the bff it
+    would look like as it was a diseases in the biosample, when it's the contrary.
+    Now, the info of a disease excluded = true is ignored ## TODO ask
+
 
 
 
 ** WORKING ON **
 
 ## TODO how to add pedigree data?? - Talk to Aldar
+
+## TODO Read cohorts phenopacket
