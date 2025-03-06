@@ -50,6 +50,47 @@ To install dependencies:
 pip install -r requirements.txt
 ```
 
+## About the Mapping
+
+Most of the mapping between the Phenopackets and Beacon models was straightforward. However, some fields in the Phenopacket schema did not have a direct match in the Beacon schema.
+
+Fields containing important metadata that could not be mapped to a specific Beacon property were stored in the additionalInformation (notes) field to preserve as much information as possible.
+
+### Specific Mappings
+
+- **Individuals.diseases.notes:**
+
+The following Phenopacket fields related to diseases were saved in the notes field:
+- resolution
+- primary_site
+- laterality
+- excluded
+
+
+- **Individuals.info:**
+
+The file.individual_to_file_identifiers field from Phenopackets is saved in the info property of the Beacon individual.
+
+- **Biosamples.notes:**
+
+The biosamples.description field is stored in the notes field of the Beacon biosample.
+
+### Handling collectionData
+
+The collectionData property in Phenopackets supports various data types, including:
+
+- gestationalAge: Measure of the age of a pregnancy
+- Age: Age as an ISO8601 duration (e.g., P40Y10M05D)
+- AgeRange: Age within a given range
+- OntologyClass: Age as an ontology class
+- Timestamp: Specific date and time
+- TimeInterval: Time interval
+
+In contrast, the Beacon schema defines collectionDate as the "Date of biosample collection in ISO8601 format" and expects a simple string.
+
+To maximize data retention, the tool converts the collectionData from Phenopackets to a string and stores it in the collectionDate property of Beacon. While this approach does not fully align with the intended collectionDate field usage, it ensures valuable data is not lost.
+
+
 ## Support
 If you encounter issues or have questions, feel free to open an issue in the [GitHub repository](https://github.com/mirgin01/phenopackets/issues).
 

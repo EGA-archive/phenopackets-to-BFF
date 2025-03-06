@@ -24,7 +24,7 @@ BIOSAMPLES
     'collectionDate': "{'age': {'iso8601duration': 'P58Y4M24D'}}"
 
     Not exactly the biosample collection date. Do we keep it this way or do we only accept collectionDate when it
-    contain Timestamp/TimeInterval ? ## TODO ask
+    contain Timestamp/TimeInterval ? ## TODO Write in README
 
 INDIVIDUALS
 ** diseases **
@@ -32,13 +32,19 @@ INDIVIDUALS
     There's a field called excluded that tells if certain disease is or is not in the cohort.
     "excluded" cannot be inserted into diseases in beacon so if a diseases excluded = true is inserted into the bff it
     would look like as it was a diseases in the biosample, when it's the contrary.
-    Now, the info of a disease excluded = true is ignored ## TODO ask
-
-
+    Now, the info of a disease excluded = true is ignored
+    ## TODO Add diseases.excluded this information in any field
+    Michael: This field is really important. It doesn't mean that a diseases was excluded from the cohort, it means that
+     a doctor specifically searched for a disease in the individual and they didn't find it (they discarded it)
 
 
 ** WORKING ON **
 
-## TODO how to add pedigree data?? - Talk to Aldar
+Both Family and Cohort are still under development in the phenopackets side -POSTPONED
 
-## TODO Read cohorts phenopacket
+
+
+
+
+
+

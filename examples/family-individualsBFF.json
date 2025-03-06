@@ -1,0 +1,554 @@
+{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ],
+    "pedigrees": [
+        {
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "ID1",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "ID2",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Father"
+                    }
+                },
+                {
+                    "affected": true,
+                    "memberId": "ID3",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Mother"
+                    }
+                }
+            ],
+            "id": "ID3",
+            "disease": {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                }
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ],
+    "pedigrees": [
+        {
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "ID1",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "ID2",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Father"
+                    }
+                },
+                {
+                    "affected": true,
+                    "memberId": "ID3",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Mother"
+                    }
+                }
+            ],
+            "id": "ID3",
+            "disease": {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                }
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ],
+    "pedigrees": [
+        {
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "ID1",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "ID2",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Father"
+                    }
+                },
+                {
+                    "affected": true,
+                    "memberId": "ID3",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Mother"
+                    }
+                }
+            ],
+            "id": "ID3",
+            "disease": {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                }
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ],
+    "pedigrees": [
+        {
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "ID1",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "ID2",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Father"
+                    }
+                },
+                {
+                    "affected": true,
+                    "memberId": "ID3",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Mother"
+                    }
+                }
+            ],
+            "id": "ID3",
+            "disease": {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                }
+            }
+        }
+    ]
+}{
+    "id": "ID1",
+    "sex": {
+        "id": "NCIT:C46112",
+        "label": "Male"
+    },
+    "diseases": [
+        {
+            "diseaseCode": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "notes": "{'resolution': None, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': None}"
+        }
+    ],
+    "phenotypicFeatures": [
+        {
+            "featureType": {
+                "id": "NCIT:C159658",
+                "label": "Obese"
+            }
+        }
+    ],
+    "pedigrees": [
+        {
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "ID1",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "ID2",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Father"
+                    }
+                },
+                {
+                    "affected": true,
+                    "memberId": "ID3",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Mother"
+                    }
+                }
+            ],
+            "id": "ID3",
+            "disease": {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                }
+            }
+        }
+    ]
+}

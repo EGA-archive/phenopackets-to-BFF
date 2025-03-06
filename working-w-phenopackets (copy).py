@@ -5,6 +5,8 @@ __email__ = "mireia.marin@crg.eu"
 
 import json
 import sys
+from operator import truediv
+
 from rich.console import Console
 console = Console()
 from google.protobuf.json_format import MessageToDict, ParseDict
@@ -61,7 +63,8 @@ diseases_mapping = {
     "onset": "ageOfOnset",
     "term" : "diseaseCode",
     "clinicalTnmFinding" : "severity",
-    "diseaseStage" : "stage"
+    "diseaseStage" : "stage",
+    "excluded" : "excluded"
 }
 
 phenotypicFeature_mapping= {
@@ -96,7 +99,7 @@ pedigree_affectedStatus = {
     "UNAFFECTED" : False,
     "MISSING" : "missing" # this will trough an error in the beacon validators. Only boolean values accepted.
 }
-diseases_extra_att = ["resolution", "primarySite", "laterality", "excluded"]
+diseases_extra_att = ["resolution", "primarySite", "laterality"]
 diseases_keys_to_reformat = ["severity", "stage"]
 
 
@@ -186,7 +189,6 @@ def process_disease(disease):
         *** The properties resolution, primarySite and laterality doesn't have a specific field in beacon.
             To avoid losing the info, if present saved as notes.
     """
-    print(disease.get("excluded"))
     notes = {}
     if any(key in disease for key in diseases_extra_att):  # save information that doesn't have a field in beacon
         # as notes
@@ -194,7 +196,6 @@ def process_disease(disease):
             "resolution": disease.get("resolution"),
             "primarySite": disease.get("primarySite"),
             "laterality": disease.get("laterality"),
-            "excluded": disease.get("excluded")
         }
     updated_disease = rename_keys(disease, diseases_mapping) # rename keys
     for key in diseases_keys_to_reformat:
@@ -232,7 +233,7 @@ def process_phenotypicFeatures(phenotypicFeature):
 
 
 
-def gather_biosamples(data):
+def create_biosamples(data):
     """
     Process and rename the biosample properties.
 
@@ -278,38 +279,19 @@ def gather_biosamples(data):
               "present in the phenopacket")
         print("... Skipping Biosamples Schema ...")
 
-def create_biosamples(phenopacket_dict):
-    """
-    Loop through all the biosamples in the phenopackets and creates a JSON per biosamples.id
-    Args:
-        phenopacket_dict (dict): Complete phenopacket dict
-
-    Returns:
-        dict: A formatted dictionary with the correct properties names and levels for biosamples model
-    """
+def start_biosamples(phenopacket_dict):
     for biosample in phenopacket_dict["biosamples"]:  # Biosamples multiciplicity : 0..*
-        biosamples_beacon_dict = gather_biosamples(biosample)
+        biosamples_beacon_dict = create_biosamples(biosample)
 
-        Biosamples(**biosamples_beacon_dict)  # Validate output with beacon r.i tools v2 validators
+    Biosamples(**biosamples_beacon_dict)  # Validate output with beacon r.i tools v2 validators
 
-        output_path = sys.argv[1].replace(".json", f"-biosamplesBFF-"
-                                                   f"{biosamples_beacon_dict['id']}.json")  # new name for
-        # output file
-        with open(output_path, "w") as f:  # save BFFs
-            json.dump(biosamples_beacon_dict, f, indent=4)
-        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
+    output_path = sys.argv[1].replace(".json", "-biosamplesBFF.json")  # new name for output file
+    with open(output_path, "a") as f:  # save BFFs
+        json.dump(biosamples_beacon_dict, f, indent=4)
+    console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
 
 
-def gather_individuals(data):
-    """
-    Gather and rename different properties to form individuals
-    Args:
-        data (dict): Complete phenopacket dict (individuals info doesn't come from one single building block)
-
-    Returns:
-        dict: A formatted dictionary with the correct properties names and levels for individuals model
-    """
-    individuals_beacon_dict = {}
+def gather_individuals(data, individuals_beacon_dict):
     individuals_beacon_dict["id"] = data["subject"]["id"]
 
     for key in sex_mapping.keys():
@@ -337,9 +319,10 @@ def gather_individuals(data):
         print("    - diseases added to Individuals")
         for disease in data["diseases"]:
             updated_disease = process_disease(disease)
-            individuals_beacon_dict.setdefault("diseases", []).append(updated_disease)  ## add it to beacon language dict
-
-
+            if "excluded" not in updated_disease.keys():  # in phenopackets excluded represents a disease not
+                # included, this cannot be inserted in the beacon format
+                individuals_beacon_dict.setdefault("diseases", []).append(
+                    updated_disease)  ## add it to beacon language dict
 
     if "phenotypicFeatures" in data:
         print("    - phenotypicFeatures added to Individuals")
@@ -364,18 +347,66 @@ def gather_individuals(data):
 
 def create_individuals(data):
     """
-    Check if mandatory fields for individuals are present and start the processing
+    Gather and rename different properties to form individuals
     Args:
         data (dict): Complete phenopacket dict (individuals info doesn't come from one single building block)
 
     Returns:
         dict: A formatted dictionary with the correct properties names and levels for individuals model
     """
+    individuals_beacon_dict = {}
+
     if "subject" in data and "id" in data["subject"] and "sex" in data["subject"]:  # mandatory fields for Individuals
         print("Mandatory properties for Individual schema (id and sex) present in the phenopacket.")
         print("-> Creating Individuals schema ...")
-        individuals_beacon_dict = gather_individuals(data) # if JSON phenopacket
+        individuals_beacon_dict = gather_individuals(data, individuals_beacon_dict) # if JSON phenopacket
         print("-> Creating Individuals schema - DONE")
+
+
+    elif "proband" in data and "id" in data["proband"] and "sex" in data["proband"]["subject"]:
+        print("Mandatory properties for Individual schema (id and sex) present in the phenopacket.")
+        print("-> Creating Individuals schema ...")
+
+        #individuals
+        individuals_beacon_dict = gather_individuals(data["proband"], individuals_beacon_dict) # if JSON Family
+
+        #individuals.pedigree
+        if "pedigree" in data.keys() and "diseases" in data["proband"]:
+            pedigrees = {}
+            pedigrees["members"] = []  # Initialize members as an empty list
+            diseases = {}
+
+            for person in data["pedigree"]["persons"]:
+                members = {}  # NEW dictionary for each person
+                members["affected"] = pedigree_affectedStatus.get(person["affectedStatus"], "unknown")
+                members["memberId"] = person["individualId"]
+
+                if "paternalId" in person or "maternalId" in person:
+                    members["role"] = {"id": "NCIT:C64435", "label": "Proband"}
+                elif ("paternalId" not in person and "maternalId" not in person) and person["sex"] == "MALE":
+                    members["role"] = {"id": "NCIT:C64435", "label": "Father"}
+                elif ("paternalId" not in person and "maternalId" not in person) and person["sex"] == "FEMALE":
+                    members["role"] = {"id": "NCIT:C64435", "label": "Mother"}
+
+                pedigrees["members"].append(members)  # Append the new dictionary to the list
+
+                # Set pedigree ID
+                pedigrees["id"] = person["individualId"]
+
+                # Disease information
+                for disease in data["proband"]["diseases"]:
+                    if members["affected"] == True:
+                        diseases["diseaseCode"] = disease["term"]
+                        pedigrees["disease"] = diseases
+
+            individuals_beacon_dict.setdefault("pedigrees", []).append(pedigrees)
+            print("    - pedigree and diseases added as pedigrees to Individuals")
+            print("-> Creating Individuals schema - DONE")
+
+
+
+
+    # TODO create cohorts elif
 
     else:
         print("The mandatory fields for Individuals beacon schema (id and sex) are not present in your phenopacket")
@@ -388,12 +419,22 @@ def main():
     with open(sys.argv[1], 'r') as f: # Load JSON Phenopacket file
         phenopacket_data = json.load(f)
 
-    # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
-    phenopacket = ParseDict(phenopacket_data, pps2.Phenopacket())
-    phenopacket_dict = MessageToDict(phenopacket)
+    try:
+        # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
+        phenopacket = ParseDict(phenopacket_data, pps2.Phenopacket())
+        phenopacket_dict = MessageToDict(phenopacket)
+    except ParseError:
+        # Deserialize JSON into a Phenopacket protobuf object and convert to dictionary
+        phenopacket = ParseDict(phenopacket_data, pps2.Family())
+        phenopacket_dict = MessageToDict(phenopacket)
+    ## TODO create exception to read cohorts
 
+    # Biosamples is in a different level depending on if it's in a Phenopacket or a Family
     if "biosamples" in phenopacket_dict:
-        create_biosamples(phenopacket_dict)
+        start_biosamples(phenopacket_dict)
+
+    elif "biosamples" in phenopacket_dict["proband"]:
+        start_biosamples(phenopacket_dict["proband"])
     else:
         console.print("[bold]The mandatory fields for BioSamples were not present in the phenopacket "
                       "[/bold]")
@@ -402,7 +443,7 @@ def main():
     if individuals_beacon_dict:
         Individuals(**individuals_beacon_dict) # Validate output with beacon r.i tools v2 validators
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
-        with open(output_path, "w") as f:  # save BFFs
+        with open(output_path, "a") as f:  # save BFFs
             json.dump(individuals_beacon_dict, f, indent=4)
         console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", output_path)
     else:

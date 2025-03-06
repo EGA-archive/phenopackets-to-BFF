@@ -331,6 +331,184 @@
                 "id": "NCIT:C42331",
                 "label": "Refrigerator"
             }
+        },
+        {
+            "id": "LukeIAmYourFather2",
+            "individualId": "Father",
+            "description": "Damn he's dead. Sucks.",
+            "sampledTissue": {
+                "id": "SNOMED:127478007",
+                "label": "Tissue specimen from thyroid gland (specimen)"
+            },
+            "sampleType": {
+                "id": "SNOMED:258566005",
+                "label": "Deoxyribonucleic acid sample (specimen)"
+            },
+            "phenotypicFeatures": [
+                {
+                    "type": {
+                        "id": "NCIT:C27009",
+                        "label": "Myalgia"
+                    }
+                }
+            ],
+            "measurements": [
+                {
+                    "assay": {
+                        "id": "LOINC:26515-7",
+                        "label": "Platelets [#/volume] in Blood"
+                    },
+                    "value": {
+                        "quantity": {
+                            "unit": {
+                                "id": "UO:0000316",
+                                "label": "cells per imcroliter"
+                            },
+                            "value": 24943.0,
+                            "referenceRange": {
+                                "unit": {
+                                    "id": "UO:0000316",
+                                    "label": "cells per imcroliter"
+                                },
+                                "low": 150000.0,
+                                "high": 450000.0
+                            }
+                        }
+                    },
+                    "timeObserved": {
+                        "timestamp": "2008-07-03T11:30:21Z"
+                    },
+                    "procedure": {
+                        "code": {
+                            "id": "NCIT:C40592",
+                            "label": "Platelet Activating Factor Signaling Process"
+                        },
+                        "performed": {
+                            "age": {
+                                "iso8601duration": "P58Y3M25D"
+                            }
+                        }
+                    }
+                },
+                {
+                    "assay": {
+                        "id": "LOINC:1234",
+                        "label": "Testing"
+                    },
+                    "value": {
+                        "quantity": {
+                            "unit": {
+                                "id": "UO:0000316",
+                                "label": "cells per imcroliter"
+                            },
+                            "value": 24943.0,
+                            "referenceRange": {
+                                "unit": {
+                                    "id": "UO:0000316",
+                                    "label": "cells per imcroliter"
+                                },
+                                "low": 150000.0,
+                                "high": 450000.0
+                            }
+                        }
+                    },
+                    "timeObserved": {
+                        "timestamp": "2008-07-03T11:30:21Z"
+                    },
+                    "procedure": {
+                        "code": {
+                            "id": "NCIT:C40592",
+                            "label": "Platelet Activating Factor Signaling Process"
+                        },
+                        "performed": {
+                            "age": {
+                                "iso8601duration": "P58Y3M25D"
+                            }
+                        }
+                    }
+                }
+            ],
+            "taxonomy": {
+                "id": "NCIT:C14225",
+                "label": "Human"
+            },
+            "timeOfCollection": {
+                "age": {
+                    "iso8601duration": "P58Y4M24D"
+                }
+            },
+            "histologicalDiagnosis": {
+                "id": "NCIT:C3879",
+                "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "tumorProgression": {
+                "id": "NCIT:84509",
+                "label": "Primary Malignant Neoplasm"
+            },
+            "tumorGrade": {
+                "id": "NCIT:C27971",
+                "label": "Stage IV"
+            },
+            "pathologicalStage": {
+                "id": "SNOMED:718465002",
+                "label": "Clinical stage 0 (finding)"
+            },
+            "pathologicalTnmFinding": [
+                {
+                    "id": "NCIT:C141023",
+                    "label": "Medullary Thyroid Carcinoma pT0 TNM"
+                }
+            ],
+            "diagnosticMarkers": [
+                {
+                    "id": "NCIT:C68748",
+                    "label": "Her2/Neu Positive"
+                },
+                {
+                    "id": "NCIT:C131711",
+                    "label": "Human Papillomavirus-18 Positive"
+                }
+            ],
+            "procedure": {
+                "code": {
+                    "id": "NCIT:C28743",
+                    "label": "Punch Biopsy"
+                },
+                "bodySite": {
+                    "id": "NCIT:C12664",
+                    "label": "Abdomen"
+                },
+                "performed": {
+                    "age": {
+                        "iso8601duration": "P58Y3M21D"
+                    }
+                }
+            },
+            "files": [
+                {
+                    "uri": "file://ThisFileDoesNotExistHeHe.vcf.gz",
+                    "individualToFileIdentifiers": {
+                        "Father": "Father_VCF"
+                    },
+                    "fileAttributes": {
+                        "genomeAssembly": "GRCh38",
+                        "fileFormat": "vcf",
+                        "description": "What do you call a train carrying bubblegum? A chew-chew train"
+                    }
+                }
+            ],
+            "materialSample": {
+                "id": "NCIT:C18009",
+                "label": "Tumor Tissue Sample"
+            },
+            "sampleProcessing": {
+                "id": "NCIT:C64863",
+                "label": "Ultrasonic Surgical Aspiration"
+            },
+            "sampleStorage": {
+                "id": "NCIT:C42331",
+                "label": "Refrigerator"
+            }
         }
     ],
     "interpretations": [
@@ -375,6 +553,42 @@
             "term": {
                 "id": "NCIT:C3879",
                 "label": "Thyroid Gland Medullary Carcinoma"
+            },
+            "onset": {
+                "age": {
+                    "iso8601duration": "P62Y2M12D"
+                }
+            },
+            "resolution": {
+                "age": {
+                    "iso8601duration": "P64Y6M21D"
+                }
+            },
+            "diseaseStage": [
+                {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                }
+            ],
+            "clinicalTnmFinding": [
+                {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                }
+            ],
+            "primarySite": {
+                "id": "NCIT:C12400",
+                "label": "Thyroid Gland"
+            },
+            "laterality": {
+                "id": "NCIT:C160199",
+                "label": "Tumor Laterality Right"
+            }
+        },
+                {
+            "term": {
+                "id": "NCIT:C3880",
+                "label": "Medullary Carcinoma"
             },
             "onset": {
                 "age": {
