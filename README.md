@@ -77,7 +77,7 @@ The biosamples.description field is stored in the notes field of the Beacon bios
 
 ### Handling collectionData
 
-The collectionData property in Phenopackets supports various data types, including:
+The biosamples.timeOfCollection property in Phenopackets supports various data types, including:
 
 - gestationalAge: Measure of the age of a pregnancy
 - Age: Age as an ISO8601 duration (e.g., P40Y10M05D)
@@ -86,7 +86,8 @@ The collectionData property in Phenopackets supports various data types, includi
 - Timestamp: Specific date and time
 - TimeInterval: Time interval
 
-In contrast, the Beacon schema defines collectionDate as the "Date of biosample collection in ISO8601 format" and expects a simple string.
+In contrast, the Beacon schema defines biosamples.collectionDate as the "Date of biosample collection in ISO8601 
+format" and expects a simple string.
 
 To maximize data retention, the tool converts the collectionData from Phenopackets to a string and stores it in the collectionDate property of Beacon. While this approach does not fully align with the intended collectionDate field usage, it ensures valuable data is not lost.
 
