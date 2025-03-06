@@ -186,7 +186,7 @@ def process_disease(disease):
         *** The properties resolution, primarySite and laterality doesn't have a specific field in beacon.
             To avoid losing the info, if present saved as notes.
     """
-    print(disease.get("excluded"))
+    
     notes = {}
     if any(key in disease for key in diseases_extra_att):  # save information that doesn't have a field in beacon
         # as notes
