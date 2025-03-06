@@ -34,8 +34,8 @@ INDIVIDUALS
     would look like as it was a diseases in the biosample, when it's the contrary.
     Now, the info of a disease excluded = true is ignored
     ## TODO Add diseases.excluded this information in any field
-    Michael: This field is really important. It doesn't mean that a diseases was excluded from the cohort, it means that
-     a doctor specifically searched for a disease in the individual and they didn't find it (they discarded it)
+    Michael: This field is really important. It doesn't mean that a disease was excluded from the cohort, it means that
+     a doctor specifically looked for a disease in the individual and they didn't find it (they discarded it)
 
 
 ** WORKING ON **
