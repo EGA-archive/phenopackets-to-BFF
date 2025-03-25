@@ -1,4 +1,4 @@
 rich
 protobuf
 validators
-phenopackets==2.0.0
+phenopackets
