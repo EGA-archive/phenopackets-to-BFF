@@ -296,8 +296,8 @@ def create_biosamples(phenopacket_dict):
                                                    f"{biosamples_beacon_dict['id']}.json")  # new name for
         # output file
         with open(output_path, "w") as f:  # save BFFs
-            json.dump(biosamples_beacon_dict, f, indent=4)
-        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
+            json.dump([biosamples_beacon_dict], f, indent=4)
+        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", sys.argv[1])
 
 
 def gather_individuals(data):
@@ -403,8 +403,8 @@ def main():
         Individuals(**individuals_beacon_dict) # Validate output with beacon r.i tools v2 validators
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
         with open(output_path, "w") as f:  # save BFFs
-            json.dump(individuals_beacon_dict, f, indent=4)
-        console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", output_path)
+            json.dump([individuals_beacon_dict], f, indent=4)
+        console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", sys.argv[1])
     else:
         console.print("[bold]The mandatory fields for Individuals were not present in the phenopacket "
                       "[/bold]")
