@@ -297,7 +297,9 @@ def create_biosamples(phenopacket_dict):
         # output file
         with open(output_path, "w") as f:  # save BFFs
             json.dump([biosamples_beacon_dict], f, indent=4)
-        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
+
+        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", sys.argv[1])
+
 
 
 def gather_individuals(data):
@@ -404,7 +406,9 @@ def main():
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
         with open(output_path, "w") as f:  # save BFFs
             json.dump([individuals_beacon_dict], f, indent=4)
-        console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", output_path)
+
+        console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", sys.argv[1])
+
     else:
         console.print("[bold]The mandatory fields for Individuals were not present in the phenopacket "
                       "[/bold]")

@@ -7,6 +7,8 @@ Format** Biosamples and Individuals models while preserving as much information 
 
 For detailed information about the mapping of properties between Phenopackets and Beacon schemas, please refer to this spreadsheet: [Beacon + Phenopackets Schemas](https://docs.google.com/spreadsheets/d/1DfkV5BwXzOggDl53-ofi7obnHT4O7J-rtUrnhZH2BiE/edit?gid=474476020#gid=474476020).
 
+**Please bear in mind that this is a beta version. If you encounter issues or have questions, feel free to open an issue in the [GitHub repository](https://github.com/EGA-archive/phenopackets-to-BFF/issues).**
+
 ## Features
 - Converts Phenopackets to Beacon-friendly Biosamples and Individuals models.
 - Retains rich metadata to ensure compatibility and completeness.
