@@ -51,8 +51,8 @@ procedure_mapping = {
 }
 
 sex_mapping = {
-    "UNKNOWN_SEX" : {"id": "NCIT_C17998", "label": "Uknown"},
-    "FEMALE": {"id": "NCIT_C46113", "label": "Female"},
+    "UNKNOWN_SEX" : {"id": "NCIT:C17998", "label": "Uknown"},
+    "FEMALE": {"id": "NCIT:C46113", "label": "Female"},
     "MALE": {"id": "NCIT:C46112", "label": "Male"},
     "OTHER_SEX" : {"id": "NCIT:C45908", "label": "Intersex"},
 }
@@ -186,7 +186,7 @@ def process_disease(disease):
         *** The properties resolution, primarySite and laterality doesn't have a specific field in beacon.
             To avoid losing the info, if present saved as notes.
     """
-    
+
     notes = {}
     if any(key in disease for key in diseases_extra_att):  # save information that doesn't have a field in beacon
         # as notes
@@ -296,7 +296,7 @@ def create_biosamples(phenopacket_dict):
                                                    f"{biosamples_beacon_dict['id']}.json")  # new name for
         # output file
         with open(output_path, "w") as f:  # save BFFs
-            json.dump(biosamples_beacon_dict, f, indent=4)
+            json.dump([biosamples_beacon_dict], f, indent=4)
         console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", output_path)
 
 
@@ -313,9 +313,9 @@ def gather_individuals(data):
     individuals_beacon_dict["id"] = data["subject"]["id"]
 
     for key in sex_mapping.keys():
-        if key in data["subject"]["sex"]:
+        if key == data["subject"]["sex"]:
             individuals_beacon_dict["sex"] = sex_mapping[key]
-
+    
     if "karyotypicSex" in data["subject"]:
         individuals_beacon_dict["karyotypicSex"] = data["subject"]["karyotypicSex"]
         print("    - karyotypicSex added to Individuals")
@@ -403,7 +403,7 @@ def main():
         Individuals(**individuals_beacon_dict) # Validate output with beacon r.i tools v2 validators
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
         with open(output_path, "w") as f:  # save BFFs
-            json.dump(individuals_beacon_dict, f, indent=4)
+            json.dump([individuals_beacon_dict], f, indent=4)
         console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", output_path)
     else:
         console.print("[bold]The mandatory fields for Individuals were not present in the phenopacket "
