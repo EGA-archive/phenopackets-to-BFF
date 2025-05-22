@@ -208,8 +208,8 @@
         "info": {
             "individualToFileIdentifiers": {
                 "individualToFileIdentifiers": {
-                    "Mother": "Mother_VCF",
-                    "Father": "Father_VCF"
+                    "Father": "Father_VCF",
+                    "Mother": "Mother_VCF"
                 }
             },
             "metaData": {
