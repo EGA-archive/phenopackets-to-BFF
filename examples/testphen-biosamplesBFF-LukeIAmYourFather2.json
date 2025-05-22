@@ -1,143 +1,145 @@
-{
-    "id": "LukeIAmYourFather2",
-    "individualId": "Father",
-    "notes": "Damn he's dead. Sucks.",
-    "sampleOriginDetail": {
-        "id": "SNOMED:127478007",
-        "label": "Tissue specimen from thyroid gland (specimen)"
-    },
-    "sampleOriginType": {
-        "id": "SNOMED:258566005",
-        "label": "Deoxyribonucleic acid sample (specimen)"
-    },
-    "phenotypicFeatures": [
-        {
-            "type": {
-                "id": "NCIT:C27009",
-                "label": "Myalgia"
+[
+    {
+        "id": "LukeIAmYourFather2",
+        "individualId": "Father",
+        "notes": "Damn he's dead. Sucks.",
+        "sampleOriginDetail": {
+            "id": "SNOMED:127478007",
+            "label": "Tissue specimen from thyroid gland (specimen)"
+        },
+        "sampleOriginType": {
+            "id": "SNOMED:258566005",
+            "label": "Deoxyribonucleic acid sample (specimen)"
+        },
+        "phenotypicFeatures": [
+            {
+                "type": {
+                    "id": "NCIT:C27009",
+                    "label": "Myalgia"
+                }
             }
-        }
-    ],
-    "measurements": [
-        {
-            "assayCode": {
-                "id": "LOINC:26515-7",
-                "label": "Platelets [#/volume] in Blood"
-            },
-            "measurementValue": {
-                "unit": {
-                    "id": "UO:0000316",
-                    "label": "cells per imcroliter"
+        ],
+        "measurements": [
+            {
+                "assayCode": {
+                    "id": "LOINC:26515-7",
+                    "label": "Platelets [#/volume] in Blood"
                 },
-                "value": 24943.0,
-                "referenceRange": {
+                "measurementValue": {
                     "unit": {
                         "id": "UO:0000316",
                         "label": "cells per imcroliter"
                     },
-                    "low": 150000.0,
-                    "high": 450000.0
+                    "value": 24943.0,
+                    "referenceRange": {
+                        "unit": {
+                            "id": "UO:0000316",
+                            "label": "cells per imcroliter"
+                        },
+                        "low": 150000.0,
+                        "high": 450000.0
+                    }
+                },
+                "observationMoment": "2008-07-03T11:30:21Z",
+                "procedure": {
+                    "procedureCode": {
+                        "id": "NCIT:C40592",
+                        "label": "Platelet Activating Factor Signaling Process"
+                    },
+                    "ageAtProcedure": {
+                        "iso8601duration": "P58Y3M25D"
+                    }
                 }
             },
-            "observationMoment": "2008-07-03T11:30:21Z",
-            "procedure": {
-                "procedureCode": {
-                    "id": "NCIT:C40592",
-                    "label": "Platelet Activating Factor Signaling Process"
+            {
+                "assayCode": {
+                    "id": "LOINC:1234",
+                    "label": "Testing"
                 },
-                "ageAtProcedure": {
-                    "iso8601duration": "P58Y3M25D"
-                }
-            }
-        },
-        {
-            "assayCode": {
-                "id": "LOINC:1234",
-                "label": "Testing"
-            },
-            "measurementValue": {
-                "unit": {
-                    "id": "UO:0000316",
-                    "label": "cells per imcroliter"
-                },
-                "value": 24943.0,
-                "referenceRange": {
+                "measurementValue": {
                     "unit": {
                         "id": "UO:0000316",
                         "label": "cells per imcroliter"
                     },
-                    "low": 150000.0,
-                    "high": 450000.0
-                }
-            },
-            "observationMoment": "2008-07-03T11:30:21Z",
-            "procedure": {
-                "procedureCode": {
-                    "id": "NCIT:C40592",
-                    "label": "Platelet Activating Factor Signaling Process"
+                    "value": 24943.0,
+                    "referenceRange": {
+                        "unit": {
+                            "id": "UO:0000316",
+                            "label": "cells per imcroliter"
+                        },
+                        "low": 150000.0,
+                        "high": 450000.0
+                    }
                 },
-                "ageAtProcedure": {
-                    "iso8601duration": "P58Y3M25D"
+                "observationMoment": "2008-07-03T11:30:21Z",
+                "procedure": {
+                    "procedureCode": {
+                        "id": "NCIT:C40592",
+                        "label": "Platelet Activating Factor Signaling Process"
+                    },
+                    "ageAtProcedure": {
+                        "iso8601duration": "P58Y3M25D"
+                    }
                 }
             }
-        }
-    ],
-    "collectionDate": "{'age': {'iso8601duration': 'P58Y4M24D'}}",
-    "histologicalDiagnosis": {
-        "id": "NCIT:C3879",
-        "label": "Thyroid Gland Medullary Carcinoma"
-    },
-    "tumorProgression": {
-        "id": "NCIT:84509",
-        "label": "Primary Malignant Neoplasm"
-    },
-    "tumorGrade": {
-        "id": "NCIT:C27971",
-        "label": "Stage IV"
-    },
-    "pathologicalStage": {
-        "id": "SNOMED:718465002",
-        "label": "Clinical stage 0 (finding)"
-    },
-    "pathologicalTnmFinding": [
-        {
-            "id": "NCIT:C141023",
-            "label": "Medullary Thyroid Carcinoma pT0 TNM"
-        }
-    ],
-    "diagnosticMarkers": [
-        {
-            "id": "NCIT:C68748",
-            "label": "Her2/Neu Positive"
+        ],
+        "collectionDate": "{'age': {'iso8601duration': 'P58Y4M24D'}}",
+        "histologicalDiagnosis": {
+            "id": "NCIT:C3879",
+            "label": "Thyroid Gland Medullary Carcinoma"
         },
-        {
-            "id": "NCIT:C131711",
-            "label": "Human Papillomavirus-18 Positive"
-        }
-    ],
-    "obtentionProcedure": {
-        "procedureCode": {
-            "id": "NCIT:C28743",
-            "label": "Punch Biopsy"
+        "tumorProgression": {
+            "id": "NCIT:84509",
+            "label": "Primary Malignant Neoplasm"
         },
-        "bodySite": {
-            "id": "NCIT:C12664",
-            "label": "Abdomen"
+        "tumorGrade": {
+            "id": "NCIT:C27971",
+            "label": "Stage IV"
         },
-        "ageAtProcedure": {
-            "iso8601duration": "P58Y3M21D"
+        "pathologicalStage": {
+            "id": "SNOMED:718465002",
+            "label": "Clinical stage 0 (finding)"
+        },
+        "pathologicalTnmFinding": [
+            {
+                "id": "NCIT:C141023",
+                "label": "Medullary Thyroid Carcinoma pT0 TNM"
+            }
+        ],
+        "diagnosticMarkers": [
+            {
+                "id": "NCIT:C68748",
+                "label": "Her2/Neu Positive"
+            },
+            {
+                "id": "NCIT:C131711",
+                "label": "Human Papillomavirus-18 Positive"
+            }
+        ],
+        "obtentionProcedure": {
+            "procedureCode": {
+                "id": "NCIT:C28743",
+                "label": "Punch Biopsy"
+            },
+            "bodySite": {
+                "id": "NCIT:C12664",
+                "label": "Abdomen"
+            },
+            "ageAtProcedure": {
+                "iso8601duration": "P58Y3M21D"
+            }
+        },
+        "biosampleStatus": {
+            "id": "NCIT:C18009",
+            "label": "Tumor Tissue Sample"
+        },
+        "sampleProcessing": {
+            "id": "NCIT:C64863",
+            "label": "Ultrasonic Surgical Aspiration"
+        },
+        "sampleStorage": {
+            "id": "NCIT:C42331",
+            "label": "Refrigerator"
         }
-    },
-    "biosampleStatus": {
-        "id": "NCIT:C18009",
-        "label": "Tumor Tissue Sample"
-    },
-    "sampleProcessing": {
-        "id": "NCIT:C64863",
-        "label": "Ultrasonic Surgical Aspiration"
-    },
-    "sampleStorage": {
-        "id": "NCIT:C42331",
-        "label": "Refrigerator"
     }
-}
+]

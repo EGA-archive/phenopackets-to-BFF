@@ -5,6 +5,7 @@ __email__ = "mireia.marin@crg.eu"
 
 import json
 import sys
+import os
 from rich.console import Console
 console = Console()
 from google.protobuf.json_format import MessageToDict, ParseDict
@@ -295,10 +296,11 @@ def create_biosamples(phenopacket_dict):
         output_path = sys.argv[1].replace(".json", f"-biosamplesBFF-"
                                                    f"{biosamples_beacon_dict['id']}.json")  # new name for
         # output file
+        filename = os.path.basename(output_path)
         with open(output_path, "w") as f:  # save BFFs
             json.dump([biosamples_beacon_dict], f, indent=4)
 
-        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", sys.argv[1])
+        console.print("[bold]+ BFFs BioSamples JSON saved in: [/bold]", filename)
 
 
 
@@ -328,20 +330,11 @@ def gather_individuals(data):
             measurement_beacon = process_measurement(assayCode)
             individuals_beacon_dict.setdefault("measures", []).append(measurement_beacon)
 
-    if "files" in data:  # additional info
-        for file in data["files"]:
-            if "individualToFileIdentifiers" in file:
-                print("    - individualToFileIdentifiers added as info to Individuals")
-                mapping = {"individualToFileIdentifiers": file["individualToFileIdentifiers"]}
-                individuals_beacon_dict["info"] = mapping
-
     if "diseases" in data:
         print("    - diseases added to Individuals")
         for disease in data["diseases"]:
             updated_disease = process_disease(disease)
             individuals_beacon_dict.setdefault("diseases", []).append(updated_disease)  ## add it to beacon language dict
-
-
 
     if "phenotypicFeatures" in data:
         print("    - phenotypicFeatures added to Individuals")
@@ -361,6 +354,24 @@ def gather_individuals(data):
                 updated_keys = rename_keys(medicalAction["procedure"], procedure_mapping)
                 updated_keys["ageAtProcedure"] = process_time_element(updated_keys["ageAtProcedure"])
                 individuals_beacon_dict.setdefault("interventionsOrProcedures", []).append(updated_keys)
+
+    individuals_beacon_dict["info"] = {} # creating info field with different properties without mapping in the beacon
+    if "files" in data:
+        for file in data["files"]:
+            if "individualToFileIdentifiers" in file:
+                print("    - individualToFileIdentifiers added as info to Individuals")
+                mapping = {"individualToFileIdentifiers": file["individualToFileIdentifiers"]}
+                individuals_beacon_dict["info"]["individualToFileIdentifiers"] = mapping
+
+    if "metaData" in data:
+        print("    - metadata added as info to Individuals")
+        individuals_beacon_dict["info"]["metaData"] = data["metaData"]
+
+    if "interpretations" in data:
+        print("    - interpretations added as info to Individuals")
+        individuals_beacon_dict["info"]["interpretations"] = data["interpretations"]
+
+
 
     return individuals_beacon_dict
 
@@ -404,10 +415,11 @@ def main():
     if individuals_beacon_dict:
         Individuals(**individuals_beacon_dict) # Validate output with beacon r.i tools v2 validators
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
+        filename = os.path.basename(output_path)
         with open(output_path, "w") as f:  # save BFFs
             json.dump([individuals_beacon_dict], f, indent=4)
 
-        console.print("[bold]+ BFFs Individuals JSON saved in: [/bold]", sys.argv[1])
+        console.print(f"[bold]+ BFFs Individuals JSON saved in: [/bold] {filename}")
 
     else:
         console.print("[bold]The mandatory fields for Individuals were not present in the phenopacket "

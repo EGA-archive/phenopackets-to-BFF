@@ -1,213 +1,276 @@
-{
-    "id": "Father",
-    "sex": {
-        "id": "NCIT:C46112",
-        "label": "Male"
-    },
-    "karyotypicSex": "XY",
-    "measures": [
-        {
-            "assayCode": {
-                "id": "LOINC:26515-7",
-                "label": "Platelets [#/volume] in Blood"
-            },
-            "measurementValue": {
-                "unit": {
-                    "id": "UO:0000316",
-                    "label": "cells per imcroliter"
+[
+    {
+        "id": "Father",
+        "sex": {
+            "id": "NCIT:C46112",
+            "label": "Male"
+        },
+        "karyotypicSex": "XY",
+        "measures": [
+            {
+                "assayCode": {
+                    "id": "LOINC:26515-7",
+                    "label": "Platelets [#/volume] in Blood"
                 },
-                "value": 24943.0,
-                "referenceRange": {
+                "measurementValue": {
                     "unit": {
                         "id": "UO:0000316",
                         "label": "cells per imcroliter"
                     },
-                    "low": 150000.0,
-                    "high": 450000.0
-                }
-            },
-            "observationMoment": "2008-07-03T11:30:21Z",
-            "procedure": {
-                "procedureCode": {
-                    "id": "NCIT:C40592",
-                    "label": "Platelet Activating Factor Signaling Process"
-                },
-                "ageAtProcedure": {
-                    "iso8601duration": "P58Y3M25D"
-                }
-            }
-        },
-        {
-            "assayCode": {
-                "id": "LOINC:1234",
-                "label": "Testing"
-            },
-            "measurementValue": {
-                "unit": {
-                    "id": "UO:0000316",
-                    "label": "cells per imcroliter"
-                },
-                "value": 24943.0,
-                "referenceRange": {
-                    "unit": {
-                        "id": "UO:0000316",
-                        "label": "cells per imcroliter"
-                    },
-                    "low": 150000.0,
-                    "high": 450000.0
-                }
-            },
-            "observationMoment": "2008-07-03T11:30:21Z",
-            "procedure": {
-                "procedureCode": {
-                    "id": "NCIT:C40592",
-                    "label": "Platelet Activating Factor Signaling Process"
-                },
-                "ageAtProcedure": {
-                    "iso8601duration": "P58Y3M25D"
-                }
-            }
-        }
-    ],
-    "info": {
-        "individualToFileIdentifiers": {
-            "Mother": "Mother_VCF",
-            "Father": "Father_VCF"
-        }
-    },
-    "diseases": [
-        {
-            "diseaseCode": {
-                "id": "NCIT:C3879",
-                "label": "Thyroid Gland Medullary Carcinoma"
-            },
-            "ageOfOnset": {
-                "iso8601duration": "P62Y2M12D"
-            },
-            "stage": {
-                "id": "NCIT:C27971",
-                "label": "Stage IV"
-            },
-            "severity": {
-                "id": "NCIT:C27971",
-                "label": "Stage IV"
-            },
-            "notes": "{'resolution': {'age': {'iso8601duration': 'P64Y6M21D'}}, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': {'id': 'NCIT:C160199', 'label': 'Tumor Laterality Right'}, 'excluded': None}"
-        },
-        {
-            "diseaseCode": {
-                "id": "NCIT:C3880",
-                "label": "Medullary Carcinoma"
-            },
-            "ageOfOnset": {
-                "iso8601duration": "P62Y2M12D"
-            },
-            "stage": {
-                "id": "NCIT:C27971",
-                "label": "Stage IV"
-            },
-            "severity": {
-                "id": "NCIT:C27971",
-                "label": "Stage IV"
-            },
-            "notes": "{'resolution': {'age': {'iso8601duration': 'P64Y6M21D'}}, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': {'id': 'NCIT:C160199', 'label': 'Tumor Laterality Right'}, 'excluded': None}"
-        },
-        {
-            "diseaseCode": {
-                "id": "NCIT:C26747",
-                "label": "Type 2 Diabetes Mellitus"
-            },
-            "notes": "{'resolution': None, 'primarySite': None, 'laterality': None, 'excluded': True}"
-        }
-    ],
-    "phenotypicFeatures": [
-        {
-            "featureType": {
-                "id": "NCIT:C159658",
-                "label": "Obese"
-            },
-            "excluded": true
-        },
-        {
-            "featureType": {
-                "id": "HP:0001270",
-                "label": "Motor delay"
-            },
-            "severity": {
-                "id": "HP:0012825",
-                "label": "Mild"
-            },
-            "modifiers": [
-                {
-                    "id": "HP:0031796",
-                    "label": "Recurrent"
-                }
-            ],
-            "onset": {
-                "iso8601duration": "P43Y"
-            },
-            "resolution": {
-                "iso8601duration": "P45Y"
-            },
-            "evidence": {
-                "evidenceCode": {
-                    "id": "ECO:0006017",
-                    "label": "author statement from published clinical study used in manual assertion"
-                },
-                "reference": {
-                    "id": "PMID:30962759",
-                    "notes": "Recurrent Erythema Nodosum in a Child with a SHOC2 Gene Mutation"
-                }
-            }
-        }
-    ],
-    "treatments": [
-        {
-            "treatmentCode": {
-                "id": "DrugCentral:1610",
-                "label": "losartan"
-            },
-            "routeOfAdministration": {
-                "id": "NCIT:C38288",
-                "label": "Oral Route of Administration"
-            },
-            "doseIntervals": [
-                {
-                    "quantity": {
+                    "value": 24943.0,
+                    "referenceRange": {
                         "unit": {
-                            "id": "UO:0000022",
-                            "label": "milligram"
+                            "id": "UO:0000316",
+                            "label": "cells per imcroliter"
                         },
-                        "value": 30.0
+                        "low": 150000.0,
+                        "high": 450000.0
+                    }
+                },
+                "observationMoment": "2008-07-03T11:30:21Z",
+                "procedure": {
+                    "procedureCode": {
+                        "id": "NCIT:C40592",
+                        "label": "Platelet Activating Factor Signaling Process"
                     },
-                    "scheduleFrequency": {
-                        "id": "NCIT:C64496",
-                        "label": "Twice Daily"
-                    },
-                    "interval": {
-                        "start": "2020-03-15T12:00:00Z",
-                        "end": "0202-03-25T13:22:17Z"
+                    "ageAtProcedure": {
+                        "iso8601duration": "P58Y3M25D"
                     }
                 }
-            ],
-            "cumulativeDose": {
-                "unit": {
-                    "id": "EFO:0002902",
-                    "label": "milligram per kilogram"
-                },
-                "value": 200.0
-            }
-        }
-    ],
-    "interventionsOrProcedures": [
-        {
-            "procedureCode": {
-                "id": "NCIT:C40592",
-                "label": "Platelet Activating Factor Signaling Process"
             },
-            "ageAtProcedure": {
-                "iso8601duration": "P58Y3M25D"
+            {
+                "assayCode": {
+                    "id": "LOINC:1234",
+                    "label": "Testing"
+                },
+                "measurementValue": {
+                    "unit": {
+                        "id": "UO:0000316",
+                        "label": "cells per imcroliter"
+                    },
+                    "value": 24943.0,
+                    "referenceRange": {
+                        "unit": {
+                            "id": "UO:0000316",
+                            "label": "cells per imcroliter"
+                        },
+                        "low": 150000.0,
+                        "high": 450000.0
+                    }
+                },
+                "observationMoment": "2008-07-03T11:30:21Z",
+                "procedure": {
+                    "procedureCode": {
+                        "id": "NCIT:C40592",
+                        "label": "Platelet Activating Factor Signaling Process"
+                    },
+                    "ageAtProcedure": {
+                        "iso8601duration": "P58Y3M25D"
+                    }
+                }
             }
+        ],
+        "diseases": [
+            {
+                "diseaseCode": {
+                    "id": "NCIT:C3879",
+                    "label": "Thyroid Gland Medullary Carcinoma"
+                },
+                "ageOfOnset": {
+                    "iso8601duration": "P62Y2M12D"
+                },
+                "stage": {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                },
+                "severity": {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                },
+                "notes": "{'resolution': {'age': {'iso8601duration': 'P64Y6M21D'}}, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': {'id': 'NCIT:C160199', 'label': 'Tumor Laterality Right'}, 'excluded': None}"
+            },
+            {
+                "diseaseCode": {
+                    "id": "NCIT:C3880",
+                    "label": "Medullary Carcinoma"
+                },
+                "ageOfOnset": {
+                    "iso8601duration": "P62Y2M12D"
+                },
+                "stage": {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                },
+                "severity": {
+                    "id": "NCIT:C27971",
+                    "label": "Stage IV"
+                },
+                "notes": "{'resolution': {'age': {'iso8601duration': 'P64Y6M21D'}}, 'primarySite': {'id': 'NCIT:C12400', 'label': 'Thyroid Gland'}, 'laterality': {'id': 'NCIT:C160199', 'label': 'Tumor Laterality Right'}, 'excluded': None}"
+            },
+            {
+                "diseaseCode": {
+                    "id": "NCIT:C26747",
+                    "label": "Type 2 Diabetes Mellitus"
+                },
+                "notes": "{'resolution': None, 'primarySite': None, 'laterality': None, 'excluded': True}"
+            }
+        ],
+        "phenotypicFeatures": [
+            {
+                "featureType": {
+                    "id": "NCIT:C159658",
+                    "label": "Obese"
+                },
+                "excluded": true
+            },
+            {
+                "featureType": {
+                    "id": "HP:0001270",
+                    "label": "Motor delay"
+                },
+                "severity": {
+                    "id": "HP:0012825",
+                    "label": "Mild"
+                },
+                "modifiers": [
+                    {
+                        "id": "HP:0031796",
+                        "label": "Recurrent"
+                    }
+                ],
+                "onset": {
+                    "iso8601duration": "P43Y"
+                },
+                "resolution": {
+                    "iso8601duration": "P45Y"
+                },
+                "evidence": {
+                    "evidenceCode": {
+                        "id": "ECO:0006017",
+                        "label": "author statement from published clinical study used in manual assertion"
+                    },
+                    "reference": {
+                        "id": "PMID:30962759",
+                        "notes": "Recurrent Erythema Nodosum in a Child with a SHOC2 Gene Mutation"
+                    }
+                }
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentCode": {
+                    "id": "DrugCentral:1610",
+                    "label": "losartan"
+                },
+                "routeOfAdministration": {
+                    "id": "NCIT:C38288",
+                    "label": "Oral Route of Administration"
+                },
+                "doseIntervals": [
+                    {
+                        "quantity": {
+                            "unit": {
+                                "id": "UO:0000022",
+                                "label": "milligram"
+                            },
+                            "value": 30.0
+                        },
+                        "scheduleFrequency": {
+                            "id": "NCIT:C64496",
+                            "label": "Twice Daily"
+                        },
+                        "interval": {
+                            "start": "2020-03-15T12:00:00Z",
+                            "end": "0202-03-25T13:22:17Z"
+                        }
+                    }
+                ],
+                "cumulativeDose": {
+                    "unit": {
+                        "id": "EFO:0002902",
+                        "label": "milligram per kilogram"
+                    },
+                    "value": 200.0
+                }
+            }
+        ],
+        "interventionsOrProcedures": [
+            {
+                "procedureCode": {
+                    "id": "NCIT:C40592",
+                    "label": "Platelet Activating Factor Signaling Process"
+                },
+                "ageAtProcedure": {
+                    "iso8601duration": "P58Y3M25D"
+                }
+            }
+        ],
+        "info": {
+            "individualToFileIdentifiers": {
+                "individualToFileIdentifiers": {
+                    "Mother": "Mother_VCF",
+                    "Father": "Father_VCF"
+                }
+            },
+            "metaData": {
+                "created": "2024-12-05T19:18:29Z",
+                "createdBy": "Aldar Cabrelles",
+                "submittedBy": "Mickey Mouse",
+                "resources": [
+                    {
+                        "id": "ncit",
+                        "name": "NCI Thesaurus OBO Edition",
+                        "url": "http://purl.obolibrary.org/obo/ncit.owl",
+                        "version": "https://github.com/NCI-Thesaurus/thesaurus-obo-edition/releases/tag/v2024-05-07/ncit.owl",
+                        "namespacePrefix": "NCIT"
+                    },
+                    {
+                        "id": "snomed",
+                        "name": "SNOMED CT",
+                        "url": "https://browser.ihtsdotools.org/",
+                        "version": "https://browser.ihtsdotools.org/?edition=MAIN/2024-12-01",
+                        "namespacePrefix": "SNOMED"
+                    }
+                ],
+                "phenopacketSchemaVersion": "2.0"
+            },
+            "interpretations": [
+                {
+                    "id": "Consortium:0000123456",
+                    "progressStatus": "SOLVED",
+                    "diagnosis": {
+                        "disease": {
+                            "id": "NCIT:C3879",
+                            "label": "Thyroid Gland Medullary Carcinoma"
+                        },
+                        "genomicInterpretations": [
+                            {
+                                "subjectOrBiosampleId": "LukeIAmYourFather",
+                                "interpretationStatus": "CANDIDATE",
+                                "variantInterpretation": {
+                                    "acmgPathogenicityClassification": "LIKELY_PATHOGENIC",
+                                    "therapeuticActionability": "ACTIONABLE",
+                                    "variationDescriptor": {
+                                        "id": "FakeVariant",
+                                        "vcfRecord": {
+                                            "genomeAssembly": "GRCh38",
+                                            "chrom": "10",
+                                            "pos": "121496701",
+                                            "id": "rs121918506",
+                                            "ref": "T",
+                                            "alt": "G",
+                                            "qual": ".",
+                                            "filter": ".",
+                                            "info": "."
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "summary": "Dummy phenopacket"
+                }
+            ]
         }
-    ]
-}
+    }
+]
