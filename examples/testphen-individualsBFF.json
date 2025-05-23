@@ -271,6 +271,7 @@
                     "summary": "Dummy phenopacket"
                 }
             ]
-        }
+        },
+        "datasetId": "datset"
     }
 ]

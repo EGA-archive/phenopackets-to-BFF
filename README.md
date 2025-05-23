@@ -33,6 +33,14 @@ For detailed information about the mapping of properties between Phenopackets an
 Run the script with the path to your Phenopacket file:
 
 ```bash
+python working-w-phenopackets.py /path/to/phenopacket.json datasetId
+```
+To link the *biosamples* and *individuals* information extracted from the Phenopackets to a dataset in the Beacon, 
+please make sure to include **the same datasetId in the query as the one defined in the dataset model.**
+
+If your beacon does not contain dataset information, simply run: 
+
+```bash
 python working-w-phenopackets.py /path/to/phenopacket.json
 ```
 

@@ -293,6 +293,9 @@ def create_biosamples(phenopacket_dict):
 
         Biosamples(**biosamples_beacon_dict)  # Validate output with beacon r.i tools v2 validators
 
+        if len(sys.argv) > 2: # add datasetId for mapping in beacon
+            biosamples_beacon_dict["datasetId"] = sys.argv[2]
+
         output_path = sys.argv[1].replace(".json", f"-biosamplesBFF-"
                                                    f"{biosamples_beacon_dict['id']}.json")  # new name for
         # output file
@@ -371,8 +374,6 @@ def gather_individuals(data):
         print("    - interpretations added as info to Individuals")
         individuals_beacon_dict["info"]["interpretations"] = data["interpretations"]
 
-
-
     return individuals_beacon_dict
 
 def create_individuals(data):
@@ -412,8 +413,11 @@ def main():
                       "[/bold]")
 
     individuals_beacon_dict = create_individuals(phenopacket_dict) # Individuals multiciplicity: 0..1
+
     if individuals_beacon_dict:
         Individuals(**individuals_beacon_dict) # Validate output with beacon r.i tools v2 validators
+        if len(sys.argv) > 2: # add datasetId for mapping in beacon
+            individuals_beacon_dict["datasetId"] = sys.argv[2]
         output_path = sys.argv[1].replace(".json", "-individualsBFF.json")  # new name for output file
         filename = os.path.basename(output_path)
         with open(output_path, "w") as f:  # save BFFs
